@@ -9,14 +9,14 @@ function MainNavbar() {
   return (
     <Navbar bg="light" expand="lg" className="!bg-green-500 p-3">
       <Container>
-        <Navbar.Brand href="#">
-          <div className="flex items-center">
+        <Navbar.Brand>
+          <Link className="flex items-center" as={Link} to="/">
             <FontAwesomeIcon
               icon={faHeart}
               className="heart-icon w-[25px] h-[25px]"
             />
             <span className="text-3xl ml-3 font-bold">Centrum Medyczne</span>
-          </div>
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
@@ -33,7 +33,7 @@ function MainNavbar() {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/"
+              to="/schedulePage"
               className="hover:underline decoration-gray-800"
             >
               Harmonogram Przyjęć

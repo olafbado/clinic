@@ -24,7 +24,7 @@ function HeroBanner() {
             czy EKG.
           </p>
           <Link
-            to="/"
+            to="/schedulePage"
             className="bg-white text-green-500 py-2 px-6 rounded-full text-lg font-bold uppercase hover:border-gray-800 border-3"
           >
             Harmonogram Przyjęć
