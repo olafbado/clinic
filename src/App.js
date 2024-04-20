@@ -1,34 +1,15 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
-
-function MainNavbar() {
-  return (
-    <Navbar bg="light" expand="lg" className="custom-navbar">
-      <Container>
-        <Navbar.Brand href="#">
-          <FontAwesomeIcon icon={faHeart} className="heart-icon" /> Centrum
-          medyczne
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            {/* Dodaj tutaj swoje linki do nawigacji */}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./components/homePage";
 
 function App() {
   return (
-    <div>
-      <MainNavbar />
-      {/* Treść strony */}
+    <div className="bg-gray-200 h-full">
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
+      </Routes>
     </div>
   );
 }
