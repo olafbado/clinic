@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function MainNavbar() {
   return (
-    <Navbar bg="light" expand="xl" className="!bg-green-500 p-3">
+    <Navbar bg="light" expand="md" className="!bg-green-500 p-3">
       <Container>
         <Navbar.Brand>
           <Link className="flex items-center" as={Link} to="/">
@@ -43,7 +43,7 @@ function MainNavbar() {
               to="/"
               className="hover:underline decoration-gray-800"
             >
-              Pakiety badań laboratoryjnych
+              Pakiety Badań Laboratoryjnych
             </Nav.Link>
             <Nav.Link
               as={Link}
