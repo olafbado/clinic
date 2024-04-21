@@ -15,7 +15,9 @@ function MainNavbar() {
               icon={faHeart}
               className="heart-icon w-[25px] h-[25px]"
             />
-            <span className="text-3xl ml-3 font-bold">Centrum Medyczne</span>
+            <span className="text-2xl sm:text-3xl ml-3 font-bold">
+              Centrum Medyczne
+            </span>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

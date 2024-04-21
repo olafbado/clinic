@@ -7,7 +7,7 @@ function HeroBanner() {
     <div className="bg-gradient-to-r from-green-500 from-10% via-green-300 via-30% to-green-500 to-90% py-10 lg:py-16 text-white">
       <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center">
         <div className="flex-1 text-center lg:text-left text-black order-last lg:mr-5">
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
             Profesjonalne Centrum Medyczne
           </h1>
           <p className="text-lg lg:text-xl mb-8">
