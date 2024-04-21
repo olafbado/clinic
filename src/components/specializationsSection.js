@@ -4,7 +4,7 @@ import { DOCTORS } from "../assets/staticData";
 
 function SpecializationsSection() {
   return (
-    <div className="container mx-auto mt-8 mb-20">
+    <div className="container mx-auto mt-8">
       <h2 className="text-2xl font-bold mb-4 text-center">
         Współpracujemy z lekarzami różnych specjalizacji, takich jak:
       </h2>

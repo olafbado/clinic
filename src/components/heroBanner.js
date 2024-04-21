@@ -6,14 +6,7 @@ function HeroBanner() {
   return (
     <div className="bg-gradient-to-r from-green-500 via-green-300 to-green-500 py-10 lg:py-16 text-white">
       <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center">
-        <div className="flex-1 mb-8 lg:mb-0 lg:mr-8">
-          <img
-            src={logo}
-            alt="Przychodnia HeroBanner"
-            className="w-full rounded-3xl mt-8 lg:mt-0"
-          />
-        </div>
-        <div className="flex-1 text-center lg:text-left text-black">
+        <div className="flex-1 text-center lg:text-left text-black order-last lg:mr-5">
           <h1 className="text-3xl lg:text-4xl font-bold mb-4">
             Profesjonalne Centrum Medyczne
           </h1>
@@ -29,6 +22,13 @@ function HeroBanner() {
           >
             Harmonogram Przyjęć
           </Link>
+        </div>
+        <div className="flex-1 mb-8 lg:mb-0 lg:order-last">
+          <img
+            src={logo}
+            alt="Przychodnia HeroBanner"
+            className="w-full rounded-3xl mt-8 lg:mt-0"
+          />
         </div>
       </div>
     </div>
