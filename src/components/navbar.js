@@ -21,7 +21,7 @@ function MainNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           id="basic-navbar-nav"
-          className="flex justify-center text-xl font-semibold"
+          className="flex justify-center text-lg font-semibold"
         >
           <Nav className="flex lg:gap-14">
             <Nav.Link
@@ -37,6 +37,13 @@ function MainNavbar() {
               className="hover:underline decoration-gray-800"
             >
               Harmonogram Przyjęć
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/"
+              className="hover:underline decoration-gray-800"
+            >
+              Pakiety badań laboratoryjnych
             </Nav.Link>
             <Nav.Link
               as={Link}

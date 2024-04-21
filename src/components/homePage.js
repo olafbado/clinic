@@ -5,6 +5,7 @@ import HeroBanner from "./heroBanner";
 import Footer from "./footer";
 import SpecializationsSection from "./specializationsSection";
 import RehabilitationSection from "./rehabilitationSection";
+import LaboratorySection from "./laboratorySection";
 
 function HomePage() {
   return (
@@ -14,6 +15,7 @@ function HomePage() {
       <HeroBanner />
       <SpecializationsSection />
       <RehabilitationSection />
+      <LaboratorySection />
       <Footer />
     </div>
   );

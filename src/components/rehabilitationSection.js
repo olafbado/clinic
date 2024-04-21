@@ -5,7 +5,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 function RehabilitationSection() {
   return (
-    <div className="bg-gradient-to-r from-green-500 via-green-300 to-green-500 py-10 lg:py-16 text-white mt-10">
+    <div className="bg-gradient-to-r from-green-500 from-20% via-green-300 via-70% to-green-500 to-100% py-10 lg:py-16 text-white mt-10">
       <div className="container mx-auto flex flex-col lg:flex-row items-center">
         <div className="flex-1 mb-8 lg:mb-0 lg:mr-8 h-full order-last">
           <img
