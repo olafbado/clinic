@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function MainNavbar() {
   return (
@@ -33,13 +33,16 @@ function MainNavbar() {
             >
               O Nas
             </Nav.Link>
-            <Nav.Link
-              as={Link}
+            <NavLink
               to="/schedulePage"
-              className="hover:underline decoration-gray-800"
+              className={({ isActive }) =>
+                `hover:underline decoration-gray-800 nav-link ${
+                  isActive ? "underline" : ""
+                }`
+              }
             >
               Harmonogram Przyjęć
-            </Nav.Link>
+            </NavLink>
             <Nav.Link
               as={Link}
               to="/"
