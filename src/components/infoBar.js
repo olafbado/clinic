@@ -8,7 +8,7 @@ import {
 
 function InfoBar() {
   return (
-    <div className=" p-3">
+    <div className="pb-3 -mt-3">
       <div className="container flex flex-col gap-3 lg:flex-row justify-evenly">
         <div className="flex flex-col justify-center">
           <p className="font-semibold">Lokalizacja:</p>

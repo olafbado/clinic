@@ -2,7 +2,16 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        myGray: "#e5e7eb",
+      },
+    },
   },
+  safelist: [
+    {
+      pattern: /(bg)-(gray)/,
+    },
+  ],
   plugins: [],
 };
