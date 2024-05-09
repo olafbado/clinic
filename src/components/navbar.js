@@ -70,7 +70,7 @@ function MainNavbar() {
               </NavLink>
               <Nav.Link
                 as={Link}
-                to="/"
+                to="/laboratoryTests"
                 className="hover:underline decoration-gray-800 flex justify-center align-items-center"
               >
                 Pakiety Badań Laboratoryjnych

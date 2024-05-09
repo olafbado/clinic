@@ -8,7 +8,100 @@ import {
   faHeart,
   faDiagnoses,
   faBone,
+  faCapsules,
+  faFlask,
+  faUserNurse,
+  faSun,
+  faWorm,
+  faAllergies,
 } from "@fortawesome/free-solid-svg-icons";
+import LoremIpsum from "react-lorem-ipsum";
+
+export const LAB_TESTS = [
+  {
+    id: 1,
+    name: "Morfofunkcjonalne badanie nerek",
+    icon: faStethoscope,
+    price: 150,
+    category: "Nerki",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+  },
+  {
+    id: 2,
+    name: "Badanie krwi",
+    icon: faHeartbeat,
+    price: 80,
+    category: "Krew",
+    description: <LoremIpsum p={2} />,
+  },
+  {
+    id: 3,
+    name: "Badanie moczu",
+    icon: faFlask,
+    price: 50,
+    category: "Nerki",
+    description: <LoremIpsum p={2} />,
+  },
+  {
+    id: 9,
+    name: "Pakiet ogólny",
+    icon: faMicroscope,
+    price: 150,
+    category: "Ogólne",
+    description: <LoremIpsum p={2} />,
+  },
+  {
+    id: 4,
+    name: "Badanie glukozy we krwi",
+    icon: faUserNurse,
+    price: 60,
+    category: "Cukrzyca",
+  },
+  {
+    id: 5,
+    name: "Badanie lipidogramu",
+    icon: faHeart,
+    price: 90,
+    category: "Serce",
+  },
+  {
+    id: 6,
+    name: "Badanie hormonów tarczycy",
+    icon: faCapsules,
+    price: 120,
+    category: "Zaburzenia hormonalne",
+  },
+  { id: 10, name: "Pakiet D3", icon: faSun, price: 120, category: "Witaminy" },
+  {
+    id: 7,
+    name: "Badanie próby wątrobowej",
+    icon: faFlask,
+    price: 70,
+    category: "Wątroba",
+  },
+  {
+    id: 8,
+    name: "Badanie PSA",
+    icon: faStethoscope,
+    price: 100,
+    category: "Nerki",
+  },
+  {
+    id: 11,
+    name: "Diagnostyka boleriozy",
+    icon: faWorm,
+    price: 120,
+    category: "Ogólne",
+  },
+  {
+    id: 12,
+    name: "Pakiet alergik",
+    icon: faAllergies,
+    price: 80,
+    category: "Ogólne",
+  },
+];
 
 export const DOCTORS = [
   {
@@ -92,3 +185,31 @@ export const DOCTORS = [
     icon: faBone,
   },
 ];
+
+export const PATIENT_DATA = {
+  firstName: "Jan",
+  lastName: "Kowalski",
+  birthDate: "1980-01-01",
+  gender: "Mężczyzna",
+  phoneNumber: "123-456-789",
+  address: "ul. Testowa 123, 00-000 Warszawa",
+  email: "jan.kowalski@example.com",
+  medicalHistory: ["Hiperlipidemia", "Nadciśnienie tętnicze"],
+  medications: ["Atorwastatyna", "Ramipryl"],
+  surgeries: ["Usunięcie wyrostka robaczkowego (2010)"],
+  visits: [
+    { date: "2024-05-15", time: "10:00", doctorId: 1 }, // Przykładowe dane wizyt pacjenta
+    { date: "2024-06-02", time: "14:30", doctorId: 2 },
+    // Dodaj więcej nadchodzących wizyt
+  ],
+  upcomingAppointments: [
+    { date: "2024-05-15", time: "10:00", doctorId: 1 }, // Przykładowe dane nadchodzących wizyt pacjenta
+    { date: "2024-06-02", time: "14:30", doctorId: 2 },
+    // Dodaj więcej nadchodzących wizyt
+  ],
+  pastAppointments: [
+    { date: "2024-04-20", time: "11:30", doctorId: 3 }, // Przykładowe dane przeszłych wizyt pacjenta
+    { date: "2024-03-10", time: "09:00", doctorId: 4 },
+    // Dodaj więcej przeszłych wizyt
+  ],
+};
