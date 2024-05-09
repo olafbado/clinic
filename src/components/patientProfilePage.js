@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Layout from "./layout";
 import { useAuth } from "./authContext";
 import { Card, Button, Form } from "react-bootstrap";
+import { PATIENT_DATA, DOCTORS } from "../assets/staticData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function PatientProfilePage() {
   const { isLoggedIn } = useAuth();
@@ -10,18 +12,7 @@ function PatientProfilePage() {
     window.location.href = "/";
   }
 
-  const [patientData, setPatientData] = useState({
-    firstName: "Jan",
-    lastName: "Kowalski",
-    birthDate: "1980-01-01",
-    gender: "Mężczyzna",
-    phoneNumber: "123-456-789",
-    address: "ul. Testowa 123, 00-000 Warszawa",
-    email: "jan.kowalski@example.com",
-    medicalHistory: ["Hiperlipidemia", "Nadciśnienie tętnicze"],
-    medications: ["Atorwastatyna", "Ramipryl"],
-    surgeries: ["Usunięcie wyrostka robaczkowego (2010)"],
-  });
+  const [patientData, setPatientData] = useState(PATIENT_DATA);
 
   const updatePatientData = (newData) => {
     setPatientData({ ...patientData, ...newData });
@@ -64,14 +55,13 @@ function PatientProfilePage() {
               </Card.Body>
             </Card>
           </div>
-          {/* Karta z historią medyczną */}
           <div className="col-lg-4 col-md-6 mb-4">
             <Card>
               <Card.Body>
                 <Card.Title className="text-lg font-semibold">
                   Historia medyczna
                 </Card.Title>
-                <Card.Text>
+                <Card.Text className="flex flex-col gap-2">
                   <p>
                     <strong>Choroby:</strong>{" "}
                     {patientData.medicalHistory.join(", ")}
@@ -87,7 +77,6 @@ function PatientProfilePage() {
               </Card.Body>
             </Card>
           </div>
-          {/* Formularz do aktualizacji danych */}
           <div className="col-lg-4 col-md-12 mb-4">
             <Card>
               <Card.Body>
@@ -101,7 +90,9 @@ function PatientProfilePage() {
                     const newData = {
                       firstName: formData.get("firstName"),
                       lastName: formData.get("lastName"),
-                      // inne pola formularza
+                      birthDate: formData.get("birthDate"),
+                      phoneNumber: formData.get("phoneNumber"),
+                      email: formData.get("email"),
                     };
                     updatePatientData(newData);
                   }}
@@ -113,10 +104,86 @@ function PatientProfilePage() {
                       name="firstName"
                       defaultValue={patientData.firstName}
                     />
+                    <Form.Label>Nazwisko:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="lastName"
+                      defaultValue={patientData.lastName}
+                    />
+                    <Form.Label>Data urodzenia:</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="birthDate"
+                      defaultValue={patientData.birthDate}
+                    />
+                    <Form.Label>Numer telefonu:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="phoneNumber"
+                      defaultValue={patientData.phoneNumber}
+                    />
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      defaultValue={patientData.email}
+                    />
                   </Form.Group>
-                  {/* Pozostałe pola formularza */}
-                  <Button type="submit">Aktualizuj dane</Button>
+                  <Button
+                    type="submit"
+                    className="bg-green-500 hover:bg-green-500 border-0 mt-3"
+                  >
+                    Aktualizuj dane
+                  </Button>
                 </Form>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="col-lg-4 col-md-12 mb-4 -mt-[200px]">
+            <Card>
+              <Card.Body>
+                <Card.Title className="text-lg font-semibold">
+                  Nadchodzące wizyty
+                </Card.Title>
+                <ul>
+                  {patientData.upcomingAppointments.map((visit, index) => {
+                    const doctor = DOCTORS.find(
+                      (doctor) => doctor.id === visit.doctorId
+                    );
+                    return (
+                      <li key={index}>
+                        <FontAwesomeIcon icon={doctor.icon} /> {doctor.name}
+                        <br />
+                        <strong>Data:</strong> {visit.date},{" "}
+                        <strong>Godzina:</strong> {visit.time}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="col-lg-4 col-md-12 mb-4 -mt-[300px]">
+            <Card>
+              <Card.Body>
+                <Card.Title className="text-lg font-semibold">
+                  Przeszłe wizyty
+                </Card.Title>
+                <ul>
+                  {patientData.pastAppointments.map((visit, index) => {
+                    const doctor = DOCTORS.find(
+                      (doctor) => doctor.id === visit.doctorId
+                    );
+                    return (
+                      <li key={index}>
+                        <FontAwesomeIcon icon={doctor.icon} /> {doctor.name}
+                        <br />
+                        <strong>Data:</strong> {visit.date},{" "}
+                        <strong>Godzina:</strong> {visit.time}
+                      </li>
+                    );
+                  })}
+                </ul>
               </Card.Body>
             </Card>
           </div>
