@@ -81,10 +81,10 @@ function MainNavbar() {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="/"
+                to="/blog"
                 className="hover:underline decoration-gray-800 flex justify-center align-items-center"
               >
-                Kontakt
+                Blog
               </Nav.Link>
               <OverlayTrigger
                 placement="bottom"

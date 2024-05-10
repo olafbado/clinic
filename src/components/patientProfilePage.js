@@ -51,7 +51,6 @@ function HistoricalTests({ patientData }) {
         </Card.Title>
         <ul className="flex flex-col gap-2">
           {patientData.historicalTests.map((historicalTest) => {
-            console.log(patientData);
             const test = LAB_TESTS.find(
               (test) => test.name === historicalTest.name
             );

@@ -14,8 +14,50 @@ import {
   faSun,
   faWorm,
   faAllergies,
+  faCoffee,
+  faDumbbell,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import LoremIpsum from "react-lorem-ipsum";
+
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "Zdrowe nerki",
+    icon: faHeart,
+    description:
+      "Przyjrzyj się kilku prostym zasadom, które pomogą Ci zadbać o swoje zdrowie poprzez odpowiednie nawyki żywieniowe.",
+    category: "Nerki",
+    text: <LoremIpsum p={5} />,
+  },
+  {
+    id: 2,
+    title: "Czerwona krew",
+    icon: faDumbbell,
+    description:
+      "Dowiedz się, dlaczego regularne wykonywanie ćwiczeń fizycznych jest kluczowe dla utrzymania dobrego stanu zdrowia i samopoczucia.",
+    category: "Krew",
+    text: <LoremIpsum p={5} />,
+  },
+  {
+    id: 3,
+    title: "Nie dla cukru",
+    icon: faBook,
+    description:
+      "Odkryj niezwykłe książki, które mogą zmienić Twoje życie i wpłynąć na Twoje myślenie.",
+    category: "Krew",
+    text: <LoremIpsum p={5} />,
+  },
+  {
+    id: 4,
+    title: "Kawa i jej wpływ na organizm",
+    icon: faCoffee,
+    description:
+      "Przeczytaj o zaletach i wadach picia kawy oraz o wpływie kofeiny na Twój organizm.",
+    category: "Krew",
+    text: <LoremIpsum p={5} />,
+  },
+];
 
 export const LAB_TESTS = [
   {
