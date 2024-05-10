@@ -5,11 +5,16 @@ import { LAB_TESTS } from "../assets/staticData";
 import Layout from "./layout";
 import { Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import LoremIpsum from "react-lorem-ipsum";
+import { useCart } from "../context/cartContext";
+import { useState } from "react";
 
 function LaboratoryTestDetailsPage() {
   const { id } = useParams();
+  const { addToCart, cartItems } = useCart();
   const test = LAB_TESTS.find((test) => test.id === parseInt(id));
+  const [selectedVariant, setSelectedVariant] = useState(
+    test ? test.variants[0] : ""
+  );
 
   if (!test) {
     return <div>Nie znaleziono badania.</div>;
@@ -19,6 +24,25 @@ function LaboratoryTestDetailsPage() {
     (relatedTest) =>
       relatedTest.category === test.category && relatedTest.id !== test.id
   );
+
+  const handleAddToCart = () => {
+    if (cartItems.find((item) => item.id === test.id)) {
+      addToCart({
+        ...test,
+        id: test.id + 1,
+        selectedVariant,
+      });
+    } else {
+      addToCart({
+        ...test,
+        selectedVariant,
+      });
+    }
+  };
+
+  const handleVariantChange = (event) => {
+    setSelectedVariant(event.target.value);
+  };
 
   return (
     <Layout>
@@ -49,20 +73,21 @@ function LaboratoryTestDetailsPage() {
                 <p className="card-text mb-3">Cena: {test.price} PLN</p>
                 <div className="mb-3">
                   <strong>Dostępne warianty:</strong>
-                  <Form.Select>
-                    {["Standard", "Rozszerzone"].map((variant, index) => (
-                      <option key={index}>{variant}</option>
+                  <Form.Select onChange={handleVariantChange}>
+                    {test.variants.map((variant) => (
+                      <option value={variant}>{variant}</option>
                     ))}
                   </Form.Select>
                   <ul></ul>
                 </div>
-                <button className="btn bg-green-500 hover:bg-green-500 mb-3">
+                <button
+                  className="btn bg-green-500 hover:bg-green-500 mb-3"
+                  onClick={handleAddToCart}
+                >
                   Dodaj do koszyka
                 </button>
                 <h2 className="card-title mb-3 text-xl font-semibold">Opis:</h2>
-                <p className="card-text">
-                  <LoremIpsum p={2} />
-                </p>
+                <p className="card-text">{test.description}</p>
               </div>
             </div>
           </div>

@@ -26,6 +26,7 @@ export const LAB_TESTS = [
     category: "Nerki",
     variants: ["Standard", "Rozszerzone"],
     description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 2,
@@ -33,7 +34,9 @@ export const LAB_TESTS = [
     icon: faHeartbeat,
     price: 80,
     category: "Krew",
+    variants: ["Standard", "Rozszerzone"],
     description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 3,
@@ -41,7 +44,9 @@ export const LAB_TESTS = [
     icon: faFlask,
     price: 50,
     category: "Nerki",
+    variants: ["Standard", "Rozszerzone"],
     description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 9,
@@ -49,7 +54,9 @@ export const LAB_TESTS = [
     icon: faMicroscope,
     price: 150,
     category: "Ogólne",
+    variants: ["Standard", "Rozszerzone"],
     description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 4,
@@ -57,6 +64,9 @@ export const LAB_TESTS = [
     icon: faUserNurse,
     price: 60,
     category: "Cukrzyca",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 5,
@@ -64,6 +74,9 @@ export const LAB_TESTS = [
     icon: faHeart,
     price: 90,
     category: "Serce",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 6,
@@ -71,14 +84,29 @@ export const LAB_TESTS = [
     icon: faCapsules,
     price: 120,
     category: "Zaburzenia hormonalne",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
-  { id: 10, name: "Pakiet D3", icon: faSun, price: 120, category: "Witaminy" },
+  {
+    id: 10,
+    name: "Pakiet D3",
+    icon: faSun,
+    price: 120,
+    category: "Witaminy",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
+  },
   {
     id: 7,
     name: "Badanie próby wątrobowej",
     icon: faFlask,
     price: 70,
     category: "Wątroba",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 8,
@@ -86,6 +114,9 @@ export const LAB_TESTS = [
     icon: faStethoscope,
     price: 100,
     category: "Nerki",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 11,
@@ -93,6 +124,9 @@ export const LAB_TESTS = [
     icon: faWorm,
     price: 120,
     category: "Ogólne",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
   {
     id: 12,
@@ -100,6 +134,9 @@ export const LAB_TESTS = [
     icon: faAllergies,
     price: 80,
     category: "Ogólne",
+    variants: ["Standard", "Rozszerzone"],
+    description: <LoremIpsum p={2} />,
+    selectedVariant: "Standard",
   },
 ];
 
@@ -198,18 +235,19 @@ export const PATIENT_DATA = {
   medications: ["Atorwastatyna", "Ramipryl"],
   surgeries: ["Usunięcie wyrostka robaczkowego (2010)"],
   visits: [
-    { date: "2024-05-15", time: "10:00", doctorId: 1 }, // Przykładowe dane wizyt pacjenta
+    { date: "2024-05-15", time: "10:00", doctorId: 1 },
     { date: "2024-06-02", time: "14:30", doctorId: 2 },
-    // Dodaj więcej nadchodzących wizyt
   ],
   upcomingAppointments: [
-    { date: "2024-05-15", time: "10:00", doctorId: 1 }, // Przykładowe dane nadchodzących wizyt pacjenta
+    { date: "2024-05-15", time: "10:00", doctorId: 1 },
     { date: "2024-06-02", time: "14:30", doctorId: 2 },
-    // Dodaj więcej nadchodzących wizyt
   ],
   pastAppointments: [
-    { date: "2024-04-20", time: "11:30", doctorId: 3 }, // Przykładowe dane przeszłych wizyt pacjenta
+    { date: "2024-04-20", time: "11:30", doctorId: 3 },
     { date: "2024-03-10", time: "09:00", doctorId: 4 },
-    // Dodaj więcej przeszłych wizyt
+  ],
+  historicalTests: [
+    { date: "2024-04-20", name: "Badanie krwi" },
+    { date: "2024-03-10", name: "Pakiet ogólny" },
   ],
 };

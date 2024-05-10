@@ -6,18 +6,22 @@ import {
   Container,
   Tooltip,
   OverlayTrigger,
+  Badge,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link, NavLink } from "react-router-dom";
 import LoginModal from "./loginModal";
-import { useAuth } from "./authContext";
+import { useAuth } from "../context/authContext";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../context/cartContext";
 
 function MainNavbar() {
   const [showModal, setShowModal] = useState(false);
 
   const { isLoggedIn, login, logout } = useAuth();
+
+  const { cartItems } = useCart();
 
   const showLoginModal = () => {
     setShowModal(true);
@@ -28,7 +32,7 @@ function MainNavbar() {
     setShowModal(false);
   };
 
-  const renderTooltip = () => <Tooltip>PROFIL PACJENTA</Tooltip>;
+  const renderTooltip = (text) => <Tooltip>{text}</Tooltip>;
 
   return (
     <>
@@ -50,7 +54,7 @@ function MainNavbar() {
             id="basic-navbar-nav"
             className="!flex justify-between text-lg font-semibold"
           >
-            <Nav className="flex lg:gap-14 ml-[70px]">
+            <Nav className="flex lg:gap-10 ml-[70px]">
               <Nav.Link
                 as={Link}
                 to="/"
@@ -82,16 +86,43 @@ function MainNavbar() {
               >
                 Kontakt
               </Nav.Link>
+              <OverlayTrigger
+                placement="bottom"
+                overlay={renderTooltip("KOSZYK")}
+              >
+                <Nav.Link
+                  className="decoration-gray-800 flex justify-center align-items-center relative"
+                  as={Link}
+                  to="/cart"
+                >
+                  {cartItems.length > 0 && (
+                    <Badge
+                      pill
+                      bg="secondary"
+                      className="absolute top-0 right-0 p-[3px]"
+                    >
+                      {cartItems.length}
+                    </Badge>
+                  )}
+                  <FontAwesomeIcon
+                    icon={faShoppingCart}
+                    className="w-[20px] h-[20px] cursor-pointer border-3 border-gray-800 p-1 rounded-md"
+                  />
+                </Nav.Link>
+              </OverlayTrigger>
               {isLoggedIn && (
-                <OverlayTrigger placement="bottom" overlay={renderTooltip()}>
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={renderTooltip("PROFIL PACJENTA")}
+                >
                   <Nav.Link
-                    className="border-3 border-gray-800 p-2 rounded-md"
+                    className="border-3 border-gray-800 p-2 rounded-md flex justify-center align-items-center"
                     as={Link}
                     to="/patientProfile"
                   >
                     <FontAwesomeIcon
                       icon={faUser}
-                      className="w-[20px] h-[20px] cursor-pointer border-3 border-gray-800 p-2 rounded-md"
+                      className="w-[20px] h-[20px] cursor-pointer border-3 border-gray-800 p-1 rounded-md"
                     />
                   </Nav.Link>
                 </OverlayTrigger>

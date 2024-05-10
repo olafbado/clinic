@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Form,
-  FormControl,
-  InputGroup,
-  Card,
-  Button,
-  ListGroup,
-} from "react-bootstrap";
+import { FormControl, InputGroup, Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -16,12 +9,17 @@ import { LAB_TESTS } from "../assets/staticData";
 function LaboratoryTestsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredTests, setFilteredTests] = useState(LAB_TESTS);
+  const [selectedCategory, setSelectedCategory] = useState("Wszystkie");
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setSearchTerm(searchTerm);
-    const filtered = LAB_TESTS.filter((test) =>
-      test.name.toLowerCase().includes(searchTerm)
+    const filtered = LAB_TESTS.filter(
+      (test) =>
+        test.name.toLowerCase().includes(searchTerm) &&
+        (selectedCategory === "Wszystkie"
+          ? true
+          : test.category === selectedCategory)
     );
     setFilteredTests(filtered);
   };
@@ -31,8 +29,10 @@ function LaboratoryTestsPage() {
 
     const filtered = LAB_TESTS.filter((test) => test.category === category);
     if (category === "Wszystkie") {
+      setSelectedCategory("Wszystkie");
       setFilteredTests(LAB_TESTS);
     } else {
+      setSelectedCategory(category);
       setFilteredTests(filtered);
     }
   };

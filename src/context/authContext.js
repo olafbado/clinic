@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { PATIENT_DATA } from "../assets/staticData";
 
 const AuthContext = createContext();
 
@@ -8,6 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(PATIENT_DATA);
 
   const login = () => {
     setIsLoggedIn(true);
@@ -18,7 +20,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn, login, logout, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
