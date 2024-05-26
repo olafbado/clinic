@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DOCTORS } from "../assets/staticData";
 import Layout from "./layout";
+import SchedulePageModal from "./schedulePageModal";
+import { Tooltip } from "react-bootstrap";
+import { OverlayTrigger } from "react-bootstrap";
+import { useAuth } from "../context/authContext";
 
 function SchedulePage() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedDoctor, setDoctor] = useState({});
+  const { isLoggedIn } = useAuth();
+
+  const showScheduleModal = (doctor) => {
+    setShowModal(true);
+    setDoctor(doctor);
+  };
+
+  const renderTooltip = (text) => <Tooltip>{text}</Tooltip>;
+
   return (
     <div>
       <Layout>
@@ -26,10 +41,32 @@ function SchedulePage() {
                 <p className="text-gray-600">Dzień: {doctor.days}</p>
                 <p className="text-gray-600">Godziny: {doctor.hours}</p>
               </div>
+              {isLoggedIn ? (
+                <button
+                  className="btn bg-green-500 hover:bg-green-500 mr-0 ml-auto"
+                  onClick={() => showScheduleModal(doctor)}
+                >
+                  Umów wizytę
+                </button>
+              ) : (
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={renderTooltip("MUSISZ BYĆ ZALOGOWANY")}
+                >
+                  <button className="btn bg-gray-400 hover:bg-gray-400 !cursor-default mr-0 ml-auto">
+                    Umów wizytę
+                  </button>
+                </OverlayTrigger>
+              )}
             </div>
           ))}
         </div>
       </Layout>
+      <SchedulePageModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        doctor={selectedDoctor}
+      />
     </div>
   );
 }

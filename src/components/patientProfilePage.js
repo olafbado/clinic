@@ -4,9 +4,11 @@ import { useAuth } from "../context/authContext";
 import { Card, Button, Form, Row, Col } from "react-bootstrap";
 import { DOCTORS, LAB_TESTS } from "../assets/staticData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSchedule } from "../context/scheduleContext";
 
 function PatientProfilePage() {
   const { isLoggedIn, user: patientData, setUser } = useAuth();
+  const { appointments } = useSchedule();
 
   if (!isLoggedIn) {
     window.location.href = "/";
@@ -26,7 +28,7 @@ function PatientProfilePage() {
             <MedicalHistory patientData={patientData} />
           </Col>
           <Col className="flex flex-col gap-3">
-            <UpcomingAppointments patientData={patientData} />
+            <UpcomingAppointments appointments={appointments} />
             <PastAppointments patientData={patientData} />
             <HistoricalTests patientData={patientData} />
           </Col>
@@ -190,7 +192,7 @@ function UpdateInformation({ patientData, updatePatientData }) {
   );
 }
 
-function UpcomingAppointments({ patientData }) {
+function UpcomingAppointments({ appointments }) {
   return (
     <Card>
       <Card.Body>
@@ -198,7 +200,7 @@ function UpcomingAppointments({ patientData }) {
           Nadchodzące wizyty
         </Card.Title>
         <ul className="flex flex-col gap-2">
-          {patientData.upcomingAppointments.map((visit, index) => {
+          {appointments.map((visit, index) => {
             const doctor = DOCTORS.find(
               (doctor) => doctor.id === visit.doctorId
             );
