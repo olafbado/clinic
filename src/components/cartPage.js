@@ -1,5 +1,3 @@
-// CartPage.js
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Layout from "./layout";
 import React from "react";

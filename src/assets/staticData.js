@@ -289,7 +289,29 @@ export const PATIENT_DATA = {
     { date: "2024-03-10", time: "09:00", doctorId: 4 },
   ],
   historicalTests: [
-    { date: "2024-04-20", name: "Badanie krwi" },
-    { date: "2024-03-10", name: "Pakiet ogólny" },
+    {
+      date: "2024-04-20",
+      name: "Badanie krwi",
+      results: {
+        hemoglobin: 50,
+        glucose: 90,
+        cholesterol: 190,
+      },
+      doctorComment:
+        "Wyniki są w normie. Kontynuuj zdrową dietę i regularne ćwiczenia.",
+      result: "POZYTYWNY",
+    },
+    {
+      date: "2024-03-10",
+      name: "Pakiet ogólny",
+      results: {
+        hemoglobin: 13,
+        glucose: 85,
+        cholesterol: 42,
+      },
+      doctorComment:
+        "Niewielkie podwyższenie cholesterolu. Zaleca się zmniejszenie spożycia tłuszczów nasyconych.",
+      result: "POZYTYWNY",
+    },
   ],
 };

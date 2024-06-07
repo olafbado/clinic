@@ -13,6 +13,7 @@ import LaboratoryTestDetailsPage from "./components/laboratoryTestDetailPage";
 import CartPage from "./components/cartPage";
 import BlogPage from "./components/blogPage";
 import BlogDetailsPage from "./components/blogDetailPage";
+import TestResultsPage from "./components/testResultsPage";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 path="/laboratoryTest/:id"
                 element={<LaboratoryTestDetailsPage />}
               />
+              <Route path="/testResults" element={<TestResultsPage />} />
             </Routes>
           </div>
         </CartProvider>

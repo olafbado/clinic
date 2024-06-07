@@ -55,17 +55,10 @@ function MainNavbar() {
             className="!flex justify-between text-lg font-semibold"
           >
             <Nav className="flex lg:gap-10 ml-[70px]">
-              <Nav.Link
-                as={Link}
-                to="/"
-                className="hover:underline decoration-gray-800 flex justify-center align-items-center"
-              >
-                O Nas
-              </Nav.Link>
               <NavLink
                 to="/schedulePage"
                 className={({ isActive }) =>
-                  `hover:underline decoration-gray-800 nav-link flex justify-center align-items-center ${
+                  `hover:underline decoration-gray-800 nav-link flex justify-center align-items-center whitespace-nowrap ${
                     isActive ? "underline" : ""
                   }`
                 }
@@ -75,7 +68,7 @@ function MainNavbar() {
               <Nav.Link
                 as={Link}
                 to="/laboratoryTests"
-                className="hover:underline decoration-gray-800 flex justify-center align-items-center"
+                className="hover:underline decoration-gray-800 flex justify-center align-items-center whitespace-nowrap"
               >
                 Pakiety Badań Laboratoryjnych
               </Nav.Link>
@@ -111,33 +104,42 @@ function MainNavbar() {
                 </Nav.Link>
               </OverlayTrigger>
               {isLoggedIn && (
-                <OverlayTrigger
-                  placement="bottom"
-                  overlay={renderTooltip("PROFIL PACJENTA")}
-                >
-                  <Nav.Link
-                    className="border-3 border-gray-800 p-2 rounded-md flex justify-center align-items-center"
-                    as={Link}
-                    to="/patientProfile"
+                <>
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={renderTooltip("PROFIL PACJENTA")}
                   >
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className="w-[20px] h-[20px] cursor-pointer border-3 border-gray-800 p-1 rounded-md"
-                    />
+                    <Nav.Link
+                      className="border-3 border-gray-800 p-2 rounded-md flex justify-center align-items-center"
+                      as={Link}
+                      to="/patientProfile"
+                    >
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        className="w-[20px] h-[20px] cursor-pointer border-3 border-gray-800 p-1 rounded-md"
+                      />
+                    </Nav.Link>
+                  </OverlayTrigger>
+                  <Nav.Link
+                    as={Link}
+                    to="/testResults"
+                    className="hover:underline decoration-gray-800 flex justify-center align-items-center whitespace-nowrap"
+                  >
+                    Wyniki badań
                   </Nav.Link>
-                </OverlayTrigger>
+                </>
               )}
               {!isLoggedIn ? (
                 <Nav.Link
                   onClick={showLoginModal}
-                  className="hover:underline decoration-gray-800"
+                  className="hover:underline decoration-gray-800 flex justify-center align-items-center whitespace-nowrap"
                 >
                   Zaloguj się
                 </Nav.Link>
               ) : (
                 <Nav.Link
                   onClick={logout}
-                  className="hover:underline decoration-gray-800 flex justify-center align-items-center"
+                  className="hover:underline decoration-gray-800 flex justify-center align-items-center whitespace-nowrap"
                 >
                   Wyloguj się
                 </Nav.Link>
