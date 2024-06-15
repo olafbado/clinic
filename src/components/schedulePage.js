@@ -6,6 +6,7 @@ import SchedulePageModal from "./schedulePageModal";
 import { Tooltip } from "react-bootstrap";
 import { OverlayTrigger } from "react-bootstrap";
 import { useAuth } from "../context/authContext";
+import Notification from "./notification";
 
 function SchedulePage() {
   const [showModal, setShowModal] = useState(false);

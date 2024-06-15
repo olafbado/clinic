@@ -25,11 +25,17 @@ function LoginModal({ show, handleClose, handleLogin }) {
         </Form>
       </Modal.Body>
       <Modal.Footer className="p-2 flex justify-between bg-myGray">
-        <MyButton className="!px-4" handleClose={handleClose}>
-          Anuluj
-        </MyButton>
-        <MyButton className="!px-4" handleClose={handleLogin}>
+        <MyButton
+          className="!px-4 bg-green-500 hover:bg-green-500"
+          handleClose={handleLogin}
+        >
           Zaloguj
+        </MyButton>
+        <MyButton
+          className="!px-4 bg-gray-400 hover:bg-gray-400"
+          handleClose={handleClose}
+        >
+          Anuluj
         </MyButton>
       </Modal.Footer>
     </Modal>

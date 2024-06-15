@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Modal, Form } from "react-bootstrap";
 import MyButton from "./button";
-import Toast from "react-bootstrap/Toast";
 import { useSchedule } from "../context/scheduleContext";
+import Notification from "./notification";
+import { useNotification } from "../context/notificationContext";
 
 function SchedulePageModal({ show, handleClose, doctor }) {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [showErrorModal, setshowErrorModal] = useState(false);
-  const toggleShowErrorModal = () => setshowErrorModal(!showErrorModal);
+  const [success, setSuccess] = useState(false);
   const { addAppointment } = useSchedule();
+
+  const { setVariant, setMessage, setShow } = useNotification();
 
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
@@ -18,8 +21,6 @@ function SchedulePageModal({ show, handleClose, doctor }) {
   const handleTimeChange = (e) => {
     setSelectedTime(e.target.value);
   };
-
-  console.log(doctor);
 
   const handleSubmit = () => {
     const selectedDay = new Date(selectedDate).toLocaleString("pl-PL", {
@@ -39,13 +40,18 @@ function SchedulePageModal({ show, handleClose, doctor }) {
     ) {
       setshowErrorModal(false);
       handleClose();
+      setShow(true);
+      setVariant("success");
+      setMessage("Wizyta zapisana pomyślnie.");
       addAppointment({
         date: selectedDay,
         time: selectedTimeFormatted,
         doctorId: doctor.id,
       });
     } else {
-      setshowErrorModal(true);
+      setShow(true);
+      setVariant("danger");
+      setMessage("Niepoprawna data lub godzina.");
     }
   };
 
@@ -78,33 +84,19 @@ function SchedulePageModal({ show, handleClose, doctor }) {
         </Form>
       </Modal.Body>
       <Modal.Footer className="p-2 flex justify-between bg-myGray">
-        <MyButton className="!px-4" handleClose={handleSubmit}>
+        <MyButton
+          className="!px-4 bg-green-500 hover:bg-green-500"
+          handleClose={handleSubmit}
+        >
           Zapisz
         </MyButton>
-        <MyButton className="!px-4" handleClose={handleClose}>
+        <MyButton
+          className="!px-4 bg-gray-400 hover:bg-gray-400"
+          handleClose={handleClose}
+        >
           Anuluj
         </MyButton>
       </Modal.Footer>
-      <Toast
-        show={showErrorModal}
-        onClose={toggleShowErrorModal}
-        style={{
-          position: "fixed",
-          top: "20px",
-          right: "20px",
-        }}
-      >
-        <Toast.Header>
-          <img
-            src="holder.js/20x20?text=%20"
-            className="rounded me-2 mr-0 ml-auto"
-            alt=""
-          />
-        </Toast.Header>
-        <Toast.Body className="bg-red-200">
-          Niepoprawna data lub godzina.
-        </Toast.Body>
-      </Toast>
     </Modal>
   );
 }

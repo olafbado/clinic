@@ -1,18 +1,10 @@
 import React from "react";
 import Layout from "./layout";
-import {
-  faDumbbell,
-  faBook,
-  faCoffee,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { BLOG_POSTS } from "../assets/staticData";
 
 const BlogPage = () => {
-  // Tablica zawierająca dane dotyczące różnych wpisów na blogu
-
   return (
     <Layout>
       <div className="container">

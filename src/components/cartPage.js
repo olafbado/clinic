@@ -8,8 +8,12 @@ import { OverlayTrigger } from "react-bootstrap";
 import { useAuth } from "../context/authContext";
 import { Tooltip } from "react-bootstrap";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import CartOrderModal from "./cartOrderModal";
+import { useState } from "react";
+import { useNotification } from "../context/notificationContext";
 
 function CartPage() {
+  const [showModal, setShowModal] = useState(false);
   const { cartItems, removeFromCart, clearCart } = useCart();
   const { isLoggedIn, user, setUser } = useAuth();
 
@@ -22,6 +26,16 @@ function CartPage() {
   const handleRemoveFromCart = (id) => {
     removeFromCart(id);
   };
+
+  const showCartModal = () => {
+    setShowModal(true);
+  };
+
+  const hideCartModal = () => {
+    setShowModal(false);
+  };
+
+  const { setVariant, setMessage, setShow } = useNotification();
 
   const handleOrderPlacement = () => {
     setUser({
@@ -38,6 +52,9 @@ function CartPage() {
       ],
     });
     clearCart();
+    setVariant("success");
+    setMessage("Zamówienie zostało złożone.");
+    setShow(true);
   };
 
   return (
@@ -92,9 +109,9 @@ function CartPage() {
           {isLoggedIn ? (
             <button
               className="btn bg-green-500 hover:bg-green-500"
-              onClick={handleOrderPlacement}
+              onClick={showCartModal}
             >
-              Złóż zamówienie
+              Przejdź dalej
             </button>
           ) : (
             <OverlayTrigger
@@ -102,12 +119,19 @@ function CartPage() {
               overlay={renderTooltip("MUSISZ BYĆ ZALOGOWANY")}
             >
               <button className="btn bg-gray-400 hover:bg-gray-400 !cursor-default">
-                Złóż zamówienie
+                Przejdź dalej
               </button>
             </OverlayTrigger>
           )}
         </div>
       </div>
+      <CartOrderModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        handleLogin={""}
+        amount={calculateTotalPrice()}
+        handleOrderPlacement={handleOrderPlacement}
+      />
     </Layout>
   );
 }

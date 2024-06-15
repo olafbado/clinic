@@ -7,6 +7,7 @@ import { Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 import { useState } from "react";
+import { useNotification } from "../context/notificationContext";
 
 function LaboratoryTestDetailsPage() {
   const { id } = useParams();
@@ -15,6 +16,8 @@ function LaboratoryTestDetailsPage() {
   const [selectedVariant, setSelectedVariant] = useState(
     test ? test.variants[0] : ""
   );
+
+  const { setVariant, setMessage, setShow } = useNotification();
 
   if (!test) {
     return <div>Nie znaleziono badania.</div>;
@@ -32,11 +35,17 @@ function LaboratoryTestDetailsPage() {
         id: test.id + 1,
         selectedVariant,
       });
+      setVariant("success");
+      setMessage("Produkt został dodany do koszyka.");
+      setShow(true);
     } else {
       addToCart({
         ...test,
         selectedVariant,
       });
+      setVariant("success");
+      setMessage("Produkt został dodany do koszyka.");
+      setShow(true);
     }
   };
 
